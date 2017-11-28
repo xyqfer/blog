@@ -20,9 +20,11 @@
 
 这样问题就很清晰了，应该是 native 层面的某些原因导致添加 `-webkit-overflow-scrolling: touch` 后在 iOS 7 的某些版本下 Crash 了。基于这种情况，我们只要在 iOS 大于 7 的系统下使用 `-webkit-overflow-scrolling: touch` 就好了，类似这样：
 
-	html.ios-gt-7 .content {
-		-webkit-overflow-scrolling: touch;
-	}
+```
+html.ios-gt-7 .content {
+	-webkit-overflow-scrolling: touch;
+}
+```
 
 这样修改后就再也没收到上述 Crash 的反馈了~
 
