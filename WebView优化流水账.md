@@ -17,9 +17,11 @@
 
 另外就是资源预推，可以在活动开始前将相应的图片推送至客户端缓存起来，也算是一种错峰吧~
 
-还有就是考虑到 iOS WebView 杀进程后资源都得重新拉，可以将 CSS/JS 存储至 localStorage，配合 combo 使用口味更佳 233
+还有就是考虑到 iOS WebView 杀进程后资源都得重新拉，可以将 CSS/JS 存储至 localStorage，配合 combo 使用口味更佳 233（以及 [增量更新](https://github.com/mtjs/mt)
 
 说到这个，还可以在客户端打包进去一些基础的公用库，比如 [支付宝H5开放文档](https://myjsapi.alipay.com/fe/preset-assets.html)，提到把 zepto、fastclick、swiper、react、vuejs 等基础库预置在客户端里内，并且区分版本（支持多版本
+
+如果是 SPA 的话还可以把整个模板都打进去和缓存掉，配合一定的打包和增量更新策略
 
 ## HTTP/2
 
@@ -58,5 +60,11 @@ WKWebView 貌似也是采用了多进程
 ## DNS
 
 HttpDNS
+
+## 其他
+
+比如创建 WebView 的时候也同时发起页面请求，变串行为并行，这样耗时就是两者的最大值了
+
+比如没事的时候先创建一个 WebView 晾着，要用的时候直接往里头塞东西就行了 233 （小程序貌似是这样的
 
 
