@@ -4,6 +4,7 @@
 
 ## 2017年12月
 
+- [Chrome 扩展踩坑系列](https://github.com/xyqfer/blog/blob/master/Chrome%E6%89%A9%E5%B1%95%E8%B8%A9%E5%9D%91%E7%B3%BB%E5%88%97.md)
 - [校招那些事](https://github.com/xyqfer/blog/blob/master/%E6%A0%A1%E6%8B%9B%E9%82%A3%E4%BA%9B%E4%BA%8B.md)
 
 ## 2017年11月
