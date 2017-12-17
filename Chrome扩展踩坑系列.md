@@ -36,6 +36,7 @@
 想了好久都没啥好办法，干脆直接劫持掉然后改成 `_blank` 再冻住好了（指的是不可写） 233
 
 ```
+// 这里 $ 指的是 document.querySelector，控制台执行
 $("#J_FrmBid").target = "_blank";
 Object.defineProperty($("#J_FrmBid"), "target", {
     writable: false
