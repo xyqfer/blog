@@ -18,3 +18,13 @@
 
 - [笔记 - Private Variables in JavaScript](https://mp.weixin.qq.com/s/fKA9J5_POoMrLtL7_H3TvQ)
 
+## 笔记
+- [ES7](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/ES7.md)
+- [ES8](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/ES8.md)
+- [ES9](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/ES9.md)
+- [正则表达式](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md)
+- [继承与原型链](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
+- [JavaScript深入之从原型到原型链](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/JavaScript%E6%B7%B1%E5%85%A5%E4%B9%8B%E4%BB%8E%E5%8E%9F%E5%9E%8B%E5%88%B0%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
+- [JavaScript深入之词法作用域和动态作用域](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/JavaScript%E6%B7%B1%E5%85%A5%E4%B9%8B%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
+- [The Cost Of JavaScript In 2018](https://github.com/xyqfer/blog/blob/master/%E7%AC%94%E8%AE%B0/The_Cost_Of_JavaScript_In_2018.md)
+
