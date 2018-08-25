@@ -65,4 +65,140 @@ let result = '2015-01-02'.replace(re, (...args) => {
 // result === '02/01/2015'
 ```
 
+## Rest/Spread Properties
+
+### 参考资料
+- [TC39](https://github.com/tc39/proposal-object-rest-spread)
+
+### 笔记
+- Shallow Clone (excluding prototype)
+- only iterates over **own** properties
+- **duplicate keys are allowed** because this enables the functional style updating of records
+	- property order in the object literal is **order dependent**
+- Getters are **executed** on any source rather than copying the descriptors over to the new object. This seems natural and is consistent with Object.assign
+- Properties on object literals are defined as new value on the object. It does **not invoke** any newly defined setters. This is different than what Object.assign on a recently defined object does
+
+### 例子
+``` js
+let oldRecord = { x: 1, y: 2 };
+let newRecord = { ...oldRecord, y: 3 };
+newRecord; // { x: 1, y: 3 }
+
+let oldRecord = { x: 1, y: 2 };
+let newRecord = { y: 3, ...oldRecord };
+newRecord; // { x: 1, y: 2 }
+
+let record = { x: 1 };
+let obj = { set x() { throw new Error(); }, ...record }; // not error
+obj.x; // 1
+
+let emptyObject = { ...null, ...undefined }; // no runtime error
+
+function ownX({ ...properties }) {
+  return properties.x;
+}
+ownX(Object.create({ x: 1 })); // undefined
+
+let { x, y, ...z } = a;
+// is not equivalent to
+let { x, ...n } = a;
+let { y, ...z } = n;
+// because x and y use the prototype chain
+
+let { x, y, ...z } = null; // runtime error
+let { ...x, y, z } = obj; // syntax error
+let { x, ...y, ...z } = obj; // syntax error
+
+var o = Object.create({ x: 1, y: 2 });
+o.z = 3;
+
+var x, y, z;
+
+({ x, ...{ y, z } } = o);
+x; // 1
+y; // undefined
+z; // 3
+```
+
+## RegExp Lookbehind Assertions
+
+### 参考资料
+- [TC39](https://github.com/tc39/proposal-regexp-lookbehind)
+
+### 笔记
+- 之所以叫后行断言，是因为正则表达式引擎在匹配字符串和表达式时，是从前向后逐个扫描字符串中的字符，并判断是否与表达式符合，当在表达式中遇到后行断言时，正则表达式引擎需要往字符串前端检测已扫描过的字符，相对于扫描方向是向后的
+
+### 例子
+``` js
+const
+  reLookbehind = /(?<=\D)\d+/,
+  match        = reLookbehind.exec('$123.89');
+
+console.log( match[0] ); // 123.89
+
+const
+  reLookbehindNeg = /(?<!\D)\d+/,
+  match           = reLookbehind.exec('$123.89');
+
+console.log( match[0] ); // null
+```
+
+## RegExp Unicode Property Escapes
+
+### 参考资料
+- [TC39](https://github.com/tc39/proposal-regexp-unicode-property-escapes)
+
+### 例子
+``` js
+const reGreekSymbol = /\p{Script=Greek}/u;
+reGreekSymbol.test('π'); // true
+```
+
+## Promise.prototype.finally
+
+### 参考资料
+- [TC39](https://github.com/tc39/proposal-promise-finally)
+
+### 笔记
+- `promise.finally(func)` is similar to `promise.then(func, func)`, but is different in a few critical ways:
+	- When creating a function inline, you can pass it once, instead of being forced to either declare it twice, or create a variable for it
+	- A `finally` callback will not receive any argument, since there's no reliable means of determining if the promise was fulfilled or rejected. This use case is for precisely when you do not care about the rejection reason, or the fulfillment value, and so there's no need to provide it
+	- Unlike `Promise.resolve(2).then(() => {}, () => {})` (which will be resolved with undefined), `Promise.resolve(2).finally(() => {})` will be resolved with 2
+	- Similarly, unlike `Promise.reject(3).then(() => {}, () => {})` (which will be resolved with undefined), `Promise.reject(3).finally(() => {})` will be rejected with 3
+-  a `throw` (or returning a rejected promise) in the `finally` callback will reject the new promise with that rejection reason
+
+
+### 例子
+``` js
+let isLoading = true;
+
+fetch(myRequest).then(function(response) {
+    var contentType = response.headers.get("content-type");
+    if(contentType && contentType.includes("application/json")) {
+      return response.json();
+    }
+    throw new TypeError("Oops, we haven't got JSON!");
+  })
+  .then(function(json) { /* process your JSON further */ })
+  .catch(function(error) { console.log(error); })
+  .finally(function() { isLoading = false; });
+```
+
+## Asynchronous Iteration
+
+### 参考资料
+- [TC39](https://github.com/tc39/proposal-async-iteration)
+
+### 笔记
+- Async for-of statements are only allowed within async functions and async generator functions
+
+### 例子
+``` js
+async function process(array) {
+  for await (let i of array) {
+    doSomething(i);
+  }
+}
+```
+
 
