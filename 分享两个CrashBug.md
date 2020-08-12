@@ -100,8 +100,7 @@ bingo~ 挂了 233
 
 好吧我只记得是说不要在伪元素里写动画因为有些是不支持的，没想到还有这种 feature。。
 
-然后搜了下确实有人总结过了。。。[原来 CSS 这样写是会让 app 崩溃的
-](http://ued.ctrip.com/blog/crash-app-by-css.html)
+然后搜了下确实有人总结过了。。。[原来 CSS 这样写是会让 app 崩溃的](http://ued.ctrip.com/?p=4955)
 
 最后总结下：
 
